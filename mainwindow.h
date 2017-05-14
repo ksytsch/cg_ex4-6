@@ -29,6 +29,10 @@ private slots:
     void on_resetButton_clicked();
     void on_blurButton_clicked();
     void on_tresholdingButton_clicked();
+    void on_bbwErosionButton_clicked();
+    void on_wbbErosionButton_clicked();
+
+
 
 private:
     Ui::mainwindow *ui;

@@ -19,7 +19,7 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 void MainWindow::readImage(){
-    originalImg =cv::imread("C:/Users/Karl/Desktop/HS_CG/cg_ex4/lena.ppm");
+    originalImg =cv::imread("C:/Users/Karl/Desktop/HS_CG/cg_ex4/duck.png");
     workingCopyImg = originalImg;
     paint(workingCopyImg);
 }
@@ -122,4 +122,21 @@ void MainWindow::on_tresholdingButton_clicked(){
 //    }
     threshold( workingCopyImg, workingCopyImg, value, 255 ,0 );
     paint(workingCopyImg);
+}
+//---
+void MainWindow::on_bbwErosionButton_clicked(){
+    qDebug() << "clicked bbwErosionButton";
+    Mat dilatedImg;
+    Mat element = getStructuringElement(MORPH_RECT,Size(7,7),Point(3, 3));
+    dilate(workingCopyImg, dilatedImg, element );
+    paint(dilatedImg);
+}
+//---
+void MainWindow::on_wbbErosionButton_clicked(){
+    qDebug() << "clicked wbbErosionButton";
+    Mat erodedImg;
+    Mat element = getStructuringElement(MORPH_RECT, Size(7,7),Point(3,3));
+    erode(workingCopyImg, erodedImg, element);
+    paint(erodedImg);
+
 }
